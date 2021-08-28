@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datingseite", "Datingseite\Datingseite.csproj", "{B1C2DB44-53FB-49E9-A582-4733C8BBA321}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1C2DB44-53FB-49E9-A582-4733C8BBA321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C2DB44-53FB-49E9-A582-4733C8BBA321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C2DB44-53FB-49E9-A582-4733C8BBA321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C2DB44-53FB-49E9-A582-4733C8BBA321}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76C98992-0C04-4387-9A79-A39DDA87ABE1}
+	EndGlobalSection
+EndGlobal

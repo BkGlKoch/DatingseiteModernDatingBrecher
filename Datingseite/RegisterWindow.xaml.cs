@@ -55,15 +55,19 @@ namespace Datingseite
             }
            else
             {
-                string testDatum = "2000-10-10";
+                string formatedDateForMySql = birthdayDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 string testBeschreibung = "Hier steht etwas über mich.";
-                query = "INSERT INTO user (`nachname`, `vorname`, `geburtstag`, `geschlecht`, `beschreibung`, `username`, `password`) VALUES ('" + textboxNachname.Text + "','" + textboxVorname.Text + "','" + testDatum + "','" + genderPicker.SelectionBoxItem.ToString()+ "','" + testBeschreibung + "','" + textboxUsername.Text + "','" + passwordBox.Password + "');";
+                query = "INSERT INTO user (`nachname`, `vorname`, `geburtstag`, `geschlecht`, `beschreibung`, `username`, `password`) VALUES ('" + textboxNachname.Text + "','" + textboxVorname.Text + "','" + formatedDateForMySql + "','" + genderPicker.SelectionBoxItem.ToString()+ "','" + testBeschreibung + "','" + textboxUsername.Text + "','" + passwordBox.Password + "');";
 
                 MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
 
                 mySqlCon.Open();
                 sqlCommand.ExecuteNonQuery();
                 mySqlCon.Close();
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
             }
             
         }

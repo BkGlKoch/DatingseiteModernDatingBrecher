@@ -19,8 +19,7 @@ namespace Datingseite
     /// </summary>
     public partial class LoginWindow : Window
     {
-        string user;
-        string password;
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -28,7 +27,9 @@ namespace Datingseite
 
         private void registerLabel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
+            this.Close();
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)

@@ -19,11 +19,40 @@ namespace Datingseite
     /// </summary>
     public partial class LoginWindow : Window
     {
-
+        MySqlConnection mySqlCon;
+        MySqlCommand sqlCommand;
+        string query;
         public LoginWindow()
         {
             InitializeComponent();
+
+            if (!doesDatabaseExist())
+            {
+                mySqlCon = new MySqlConnection("server=localhost; port=3306; username=Datingseite; password=schönenabendnoch45613;");
+                string query = "CREATE database modernDating; use modernDating; create table user( idUser int primary key not null auto_increment, nachname varchar(40), vorname varchar(40), geburtstag date, geschlecht varchar(30), beschreibung varchar(400), username varchar(20), password varchar(20));";
+
+                sqlCommand = new MySqlCommand(query, mySqlCon);
+
+                mySqlCon.Open();
+                sqlCommand.ExecuteNonQuery();
+                mySqlCon.Close();
+            }
         }
+
+        bool doesDatabaseExist()
+        {
+            mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+            try
+            {
+                mySqlCon.Open();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         private void registerLabel_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -35,9 +64,9 @@ namespace Datingseite
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection); 
+            mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection); 
 
-            string query = "SELECT * FROM user WHERE username = '"+textboxUsername.Text.Trim()+"' AND password = '" + passwordBox.Password.Trim() +"'";
+            query = "SELECT * FROM user WHERE username = '"+textboxUsername.Text.Trim()+"' AND password = '" + passwordBox.Password.Trim() +"'";
 
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 

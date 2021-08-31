@@ -66,7 +66,7 @@ namespace Datingseite
 
             mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection); 
 
-            query = "SELECT * FROM user WHERE username = '"+textboxUsername.Text.Trim()+"' AND password = '" + passwordBox.Password.Trim() +"'";
+            query = "SELECT * FROM user WHERE username = '"+textboxUsername.Text.Trim()+"' AND password = '" + passwordBox.Password.Trim()+"'";
 
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
@@ -76,6 +76,7 @@ namespace Datingseite
 
             if (dt.Rows.Count == 1)
             {
+                GlobaleVariabeln.loggedInUser = textboxUsername.Text;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();

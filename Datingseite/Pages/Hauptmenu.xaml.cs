@@ -21,6 +21,8 @@ namespace Datingseite.Pages
         public Hauptmenu()
         {
             InitializeComponent();
+            textBlockLoggeInAs.Text = "Eingeloggt als: "+ Environment.NewLine + GlobaleVariabeln.loggedInUser;
+            
         }
     }
 }

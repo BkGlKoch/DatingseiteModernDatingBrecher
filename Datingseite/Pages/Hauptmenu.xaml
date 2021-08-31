@@ -10,13 +10,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.9*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <Border CornerRadius="10" Grid.RowSpan="2" Grid.ColumnSpan="2">
@@ -28,15 +28,37 @@
             </Border.Background>
         </Border>
 
-        <Border Grid.Row="0" Grid.Column="0">
-            <StackPanel VerticalAlignment="Center" Margin="0,0,0,0">
-                <TextBlock 
+
+        <StackPanel VerticalAlignment="Center" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0">
+            <TextBlock 
                     Text="Modern Dating" 
                     FontWeight="Medium"
                     FontSize="30"
-                    HorizontalAlignment="Center">
-                </TextBlock>
-            </StackPanel>
-        </Border>
+                    HorizontalAlignment="Center"/>
+
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" Margin="0,5,5,0">
+            <TextBlock Text="Eingeloggt als" FontSize="15" Name="textBlockLoggeInAs"/>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0">
+            <TextBlock Text="Auf Partnersuche gehen:" FontSize="20"/>
+            <Button Content="Partner Finden" FontSize="15"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <TextBlock Text="Gefundene Partner:" FontSize="20" TextAlignment="Center"/>
+
+            <DataGrid x:Name="matchesDatagrid" Width="350">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Username" Width="150" x:Name="gvUsername"/>
+                    <DataGridTextColumn Header="Name" Width="150" x:Name="gvName"/>
+                    <DataGridTextColumn Header="Alter" Width="50" x:Name="gvAlter"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </StackPanel>
+
     </Grid>
 </Page>

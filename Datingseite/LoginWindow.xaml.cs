@@ -29,7 +29,7 @@ namespace Datingseite
             if (!doesDatabaseExist())
             {
                 mySqlCon = new MySqlConnection("server=localhost; port=3306; username=Datingseite; password=schönenabendnoch45613;");
-                string query = "CREATE database modernDating; use modernDating; create table user( idUser int primary key not null auto_increment, nachname varchar(40), vorname varchar(40), geburtstag date, geschlecht varchar(30), beschreibung varchar(400), username varchar(20), password varchar(20));";
+                string query = "CREATE database modernDating; use modernDating; create table user( idUser int primary key not null auto_increment, nachname varchar(40), vorname varchar(40), geburtstag date, geschlecht varchar(30), beschreibung varchar(400), username varchar(20), password varchar(20) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_as_cs' );";
 
                 sqlCommand = new MySqlCommand(query, mySqlCon);
 

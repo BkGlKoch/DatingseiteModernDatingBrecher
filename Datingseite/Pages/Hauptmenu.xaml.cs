@@ -22,6 +22,7 @@ namespace Datingseite.Pages
         {
             InitializeComponent();
             textBlockLoggeInAs.Text = "Eingeloggt als: "+ Environment.NewLine + GlobaleVariabeln.loggedInUser;
+
             
         }
     }

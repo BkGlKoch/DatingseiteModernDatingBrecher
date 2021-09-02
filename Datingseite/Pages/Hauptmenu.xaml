@@ -47,14 +47,14 @@
             <Button Content="Partner Finden" FontSize="15"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch">
             <TextBlock Text="Gefundene Partner:" FontSize="20" TextAlignment="Center"/>
 
-            <DataGrid x:Name="matchesDatagrid" Width="350">
+            <DataGrid x:Name="matchesDatagrid">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Username" Width="150" x:Name="gvUsername"/>
-                    <DataGridTextColumn Header="Name" Width="150" x:Name="gvName"/>
-                    <DataGridTextColumn Header="Alter" Width="50" x:Name="gvAlter"/>
+                    <DataGridTextColumn Header="Username" Width="3*" x:Name="gvUsername"/>
+                    <DataGridTextColumn Header="Name" Width="1.5*" x:Name="gvName"/>
+                    <DataGridTextColumn Header="Alter" Width="1*" x:Name="gvAlter"/>
                 </DataGrid.Columns>
             </DataGrid>
             

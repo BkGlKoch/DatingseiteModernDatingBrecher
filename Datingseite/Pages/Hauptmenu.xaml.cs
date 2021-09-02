@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Datingseite.Pages
 {
@@ -18,12 +20,26 @@ namespace Datingseite.Pages
     /// </summary>
     public partial class Hauptmenu : Page
     {
+        MySqlConnection mySqlCon;
+        MySqlCommand sqlCommand;
+        string query;
         public Hauptmenu()
         {
             InitializeComponent();
             textBlockLoggeInAs.Text = "Eingeloggt als: "+ Environment.NewLine + GlobaleVariabeln.loggedInUser;
 
+            mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+
+            query = "SELECT username,vorname,geburtsdatum FROM user";
+            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+
+            DataTable dt = new DataTable();
+
+            mySqlDataAdapter.Fill(dt);
+
+            matchesDatagrid.ItemsSource = dt.DefaultView;
             
+
         }
     }
 }

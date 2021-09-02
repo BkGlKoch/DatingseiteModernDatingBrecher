@@ -50,15 +50,13 @@
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch">
             <TextBlock Text="Gefundene Partner:" FontSize="20" TextAlignment="Center"/>
 
-            <DataGrid x:Name="matchesDatagrid">
+            <DataGrid Name="matchesDatagrid" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Username" Width="3*" x:Name="gvUsername"/>
-                    <DataGridTextColumn Header="Name" Width="1.5*" x:Name="gvName"/>
-                    <DataGridTextColumn Header="Alter" Width="1*" x:Name="gvAlter"/>
+                    <DataGridTextColumn Binding="{Binding username}" Header="Username" Width="2*" x:Name="gvUsername"/>
+                    <DataGridTextColumn Binding="{Binding vorname}" Header="Vorname" Width="1.5*" x:Name="gvVorname"/>
+                    <DataGridTextColumn Binding="{Binding geburtsdatum}" Header="Geburtsdatum" Width="1*" x:Name="gvGeburtsdatum"/>
                 </DataGrid.Columns>
             </DataGrid>
-            
         </StackPanel>
-
     </Grid>
 </Page>

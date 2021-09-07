@@ -21,7 +21,6 @@ namespace Datingseite.Pages
     public partial class Hauptmenu : Page
     {
         MySqlConnection mySqlCon;
-        MySqlCommand sqlCommand;
         string query;
         public Hauptmenu()
         {

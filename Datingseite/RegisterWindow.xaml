@@ -13,10 +13,15 @@
             <RowDefinition Height="120"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
 
 
-        <Border CornerRadius="10" Grid.RowSpan="2">
+        <Border CornerRadius="10" Grid.RowSpan="2" Grid.ColumnSpan="3">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="IndianRed" Offset="0.4"/>
@@ -25,7 +30,7 @@
             </Border.Background>
         </Border>
 
-        <StackPanel VerticalAlignment="Top" Margin="0,46,0,0">
+        <StackPanel Margin="0,46,0,0" Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch">
             <TextBlock 
                     Text="Modern Dating" 
                     FontWeight="Heavy"
@@ -34,7 +39,7 @@
             </TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch">
             <TextBox FontWeight="Light"
                     Text="Username"
                     FontSize="22"
@@ -46,7 +51,7 @@
                     Name="textboxUsername"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0,35,0,0">
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,35,0,0" VerticalAlignment="Stretch">
             <PasswordBox FontWeight="Light"
                     Password="Password"
                     FontSize="22"
@@ -58,11 +63,11 @@
                     Name="passwordBox"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Top" Width="235" Margin="0,75,0,0">
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" Width="235" Margin="0,75,0,0">
             <DatePicker Name="birthdayDatePicker" Background="Transparent" SelectedDateFormat="Short"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0,100,0,0" Width="235">
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Width="235">
             <TextBox FontWeight="Light"
                     Text="Nachname"
                     FontSize="22"
@@ -73,8 +78,8 @@
                     Width="235"
                     Name="textboxNachname"/>
         </StackPanel>
-        
-        <StackPanel Grid.Row="1" Margin="0,135,0,0" Width="235">
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,135,0,0" Width="235" VerticalAlignment="Stretch">
             <TextBox FontWeight="Light"
                     Text="Vorname"
                     FontSize="22"
@@ -86,7 +91,7 @@
                     Name="textboxVorname"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0,175,0,0" Width="235">
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,175,0,0" Width="235" VerticalAlignment="Stretch">
             <ComboBox Name="genderPicker">
                 <ComboBoxItem>Männlich</ComboBoxItem>
                 <ComboBoxItem>Weiblich</ComboBoxItem>
@@ -94,7 +99,7 @@
             </ComboBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
             <Button x:Name="registerButton" Content="Register" Height="50" Width="120" Background="Pink" FontSize="20" Margin="0,0,0,75" Click="registerButton_Click"/>
         </StackPanel>
 

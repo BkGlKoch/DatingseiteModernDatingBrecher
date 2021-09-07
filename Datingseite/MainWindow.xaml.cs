@@ -29,12 +29,12 @@ namespace Datingseite
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Pages.Testseite1();
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Pages.Testseite2();
+            
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

@@ -44,7 +44,7 @@
 
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0">
             <TextBlock Text="Auf Partnersuche gehen:" FontSize="20"/>
-            <Button Content="Partner Finden" FontSize="15"/>
+            <Button Content="Partner Finden" FontSize="15" Click="Button_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"  Margin="5,0,5,0">

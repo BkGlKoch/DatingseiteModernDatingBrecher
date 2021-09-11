@@ -106,7 +106,7 @@
 
         <StackPanel>
             <Button HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Margin="20,20,0,0" Name="backToLoginButton" Click="backToLoginButton_Click">
-                <Image Source="/images/arrowback.png"/>
+                <Image Source="C:\Users\berga\Source\Repos\BkGlKoch\DatingseiteModernDatingBrecher\Datingseite\images\arrowback.png"/>
             </Button>
         </StackPanel>
 

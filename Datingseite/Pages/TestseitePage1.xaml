@@ -9,6 +9,6 @@
       Title="TestseitePage1">
 
     <Grid>
-        <Button Content="test"></Button>
+        <Image x:Name="imageplace"/>
     </Grid>
 </Page>

@@ -13,8 +13,16 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Drawing;
+using System.ComponentModel;
+using Microsoft.Win32;
 
-    
+
+
+
+
 
 namespace Datingseite.Pages
 {
@@ -43,20 +51,22 @@ namespace Datingseite.Pages
             
 
         }
-        void saveImgageInDB(string bildPfad)
-        {
-            byte[] blob = File.ReadAllBytes(bildPfad);
-            var cmd = new MySqlCommand("INSERT INTO user (idUser,profilbild) VALUES (1, (@test))", mySqlCon);
-            MySqlParameter param = new MySqlParameter("@test", MySqlDbType.LongBlob);
-            param.Value = blob;
-            cmd.Parameters.Add(param);
-            cmd.ExecuteNonQuery();
-        }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TestseitePage1 testseitePage = new TestseitePage1();
             NavigationService.Navigate(testseitePage);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Window1 w1 = new Window1();
+            w1.Show();
         }
     }
 }

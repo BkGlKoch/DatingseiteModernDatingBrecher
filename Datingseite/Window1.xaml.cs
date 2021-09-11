@@ -18,15 +18,22 @@ using System.Windows.Media;
 namespace Datingseite.Pages
 {
     /// <summary>
-    /// Interaktionslogik für TestseitePage1.xaml
+    /// Interaktionslogik für Window1.xaml
     /// </summary>
-    /// 
-    //Test für das Hochladen von Bildern.+
-    public partial class TestseitePage1 : Page
+    public partial class Window1 : Window
     {
-        public TestseitePage1()
+        public Window1()
         {
             InitializeComponent();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            this.Close(); 
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*";
             if (openFileDialog.ShowDialog() == true)
@@ -35,16 +42,12 @@ namespace Datingseite.Pages
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(openFileDialog.FileName);
                 bitmap.EndInit();
-                
-
+                profilePicture.Source = bitmap;
 
                 byte[] imageBytes = convertBitmapImageToByteArray(bitmap);
-
                 bitmap = convertByteArrayToBitmap(imageBytes);
-                
             }
         }
-
         byte[] convertBitmapImageToByteArray(BitmapImage bmpImage)
         {
             byte[] imageArray;
@@ -56,7 +59,6 @@ namespace Datingseite.Pages
                 imageArray = ms.ToArray();
                 return imageArray;
             }
-
         }
 
         BitmapImage convertByteArrayToBitmap(Byte[] btArray)
@@ -66,6 +68,6 @@ namespace Datingseite.Pages
             bmp.StreamSource = new System.IO.MemoryStream(btArray);
             bmp.EndInit();
             return bmp;
-        } 
+        }
     }
 }

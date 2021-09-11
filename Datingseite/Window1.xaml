@@ -1,0 +1,116 @@
+﻿<Window x:Class="Datingseite.Pages.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Datingseite.Pages"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800"
+        AllowsTransparency="True"
+        WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+
+        
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.RowSpan="3" Grid.ColumnSpan="2" RenderTransformOrigin="0.642,0.689">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="IndianRed" Offset="0.4"/>
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            
+            
+            <TextBox FontWeight="Light"
+                    Text="Username:"
+                    FontSize="22"
+                    Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    HorizontalContentAlignment="Left"
+                    Width="525"
+                    x:Name="textboxUsername"
+                    IsEnabled="False"/>
+
+            <TextBox FontWeight="Light"
+                    Text="First Name:"
+                    FontSize="22"
+                    Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    HorizontalContentAlignment="Left"
+                    Width="525"
+                    x:Name="textboxFirstName"
+                    IsEnabled="False"/>
+
+            <TextBox FontWeight="Light"
+                    Text="Name:"
+                    FontSize="22"
+                    Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    HorizontalContentAlignment="Left"
+                    Width="525"
+                    x:Name="textboxName"
+                    IsEnabled="False"/>
+
+            <TextBox FontWeight="Light"
+                    Text="Age:"
+                    FontSize="22"
+                    Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    HorizontalContentAlignment="Left"
+                    Width="525"
+                    x:Name="textboxAge"
+                    IsEnabled="False"/>
+
+            <TextBox FontWeight="Light"
+                    Text="Gender:"
+                    FontSize="22"
+                    Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    HorizontalContentAlignment="Left"
+                    Width="525"
+                    x:Name="textboxGender"
+                    IsEnabled="False"/>
+
+            <TextBox FontWeight="Light"
+                    Text="Description:"
+                    FontSize="22"
+                    Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    HorizontalContentAlignment="Left"
+                    Width="525"
+                    x:Name="textboxDescription"
+                    IsEnabled="False"/>
+        </StackPanel>
+
+
+
+        <StackPanel VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Height="39">
+            <TextBlock x:Name="Username" 
+                    Text="Profil" 
+                    FontWeight="Medium"
+                    FontSize="30"
+                    HorizontalAlignment="Center"/>
+            <TextBlock/>
+        </StackPanel>
+
+        <StackPanel Grid.Row = "1" Grid.Column = "0" >
+            <Image Source="C:\Users\berga\Source\Repos\BkGlKoch\DatingseiteModernDatingBrecher\Datingseite\images\NoPbImage.png" MouseUp = "Image_MouseUp" Name = "profilePicture" Width="266" Height ="266"/>
+        </StackPanel >
+
+        <Button Content="zurück" Margin="10,18,110,10" Grid.Row="2" Click="Button_Click"> </Button>
+
+    </Grid>
+</Window>

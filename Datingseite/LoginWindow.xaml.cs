@@ -78,7 +78,14 @@ namespace Datingseite
 
             if (dt.Rows.Count == 1)
             {
-                GlobaleVariabeln.loggedInUser = dt.Rows[0].ItemArray[6].ToString();
+                GlobaleVariabeln.username = dt.Rows[0].ItemArray[6].ToString();
+                GlobaleVariabeln.firstname = dt.Rows[0].ItemArray[2].ToString();
+                GlobaleVariabeln.name = dt.Rows[0].ItemArray[1].ToString();
+                GlobaleVariabeln.gender = dt.Rows[0].ItemArray[4].ToString();
+                GlobaleVariabeln.description = dt.Rows[0].ItemArray[5].ToString();
+                GlobaleVariabeln.birthday = dt.Rows[0].ItemArray[3].ToString();
+
+
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();

@@ -25,7 +25,18 @@ namespace Datingseite.Pages
         public Window1()
         {
             InitializeComponent();
+            
+            textboxUsername.Text = "Username: " + GlobaleVariabeln.username;
+            textboxFirstName.Text = "Vorname: " + GlobaleVariabeln.firstname;
+            textboxName.Text = "Name: " + GlobaleVariabeln.name;
+            textboxGender.Text = "Geschlecht: " + GlobaleVariabeln.gender;
+            textboxAge.Text = "Alter: " + GlobaleVariabeln.birthday;
+            textboxDescription.Text = "Beschreibung: " + GlobaleVariabeln.description;
+            
         }
+
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -68,6 +79,13 @@ namespace Datingseite.Pages
             bmp.StreamSource = new System.IO.MemoryStream(btArray);
             bmp.EndInit();
             return bmp;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            TestseitePage1 testseitePage = new TestseitePage1();
+            this.Content = testseitePage;
+             
         }
     }
 }

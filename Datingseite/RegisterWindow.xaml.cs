@@ -65,7 +65,7 @@ namespace Datingseite
                 sqlCommand.ExecuteNonQuery();
                 mySqlCon.Close();
 
-                GlobaleVariabeln.loggedInUser = textboxUsername.Text;
+                GlobaleVariabeln.username = textboxUsername.Text;
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

@@ -29,6 +29,7 @@
                     <GradientStop Color="White" Offset="1" />
                 </LinearGradientBrush>
             </Border.Background>
+            <Button Content="change" Margin="67,61,618,350" Click="Button_Click_1"/>
         </Border>
 
         <StackPanel Grid.Row="1" Grid.Column="2">
@@ -107,7 +108,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row = "1" Grid.Column = "0" >
-            <Image Source="C:\Users\berga\Source\Repos\BkGlKoch\DatingseiteModernDatingBrecher\Datingseite\images\NoPbImage.png" MouseUp = "Image_MouseUp" Name = "profilePicture" Width="266" Height ="266"/>
+            <Image Source="/NoPbImage.png" MouseUp = "Image_MouseUp" Name = "profilePicture" Width="266" Height ="266"/>
         </StackPanel >
 
         <Button Content="zurück" Margin="10,18,110,10" Grid.Row="2" Click="Button_Click"> </Button>

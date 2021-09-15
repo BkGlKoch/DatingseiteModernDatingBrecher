@@ -36,7 +36,7 @@ namespace Datingseite.Pages
         public Hauptmenu()
         {
             InitializeComponent();
-            textBlockLoggeInAs.Text = "Eingeloggt als: "+ Environment.NewLine + GlobaleVariabeln.loggedInUser;
+            textBlockLoggeInAs.Text = "Eingeloggt als: "+ Environment.NewLine + GlobaleVariabeln.username;
 
            
 
@@ -54,8 +54,9 @@ namespace Datingseite.Pages
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TestseitePage1 testseitePage = new TestseitePage1();
-            NavigationService.Navigate(testseitePage);
+           
+            Tinderseite tinderseite = new Tinderseite();
+            NavigationService.Navigate(tinderseite);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

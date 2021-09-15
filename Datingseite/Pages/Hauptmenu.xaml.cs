@@ -12,6 +12,17 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Drawing;
+using System.ComponentModel;
+using Microsoft.Win32;
+
+
+
+
+
 
 namespace Datingseite.Pages
 {
@@ -20,15 +31,14 @@ namespace Datingseite.Pages
     /// </summary>
     public partial class Hauptmenu : Page
     {
-        MySqlConnection mySqlCon;
-        MySqlCommand sqlCommand;
+        MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
         string query;
         public Hauptmenu()
         {
             InitializeComponent();
             textBlockLoggeInAs.Text = "Eingeloggt als: "+ Environment.NewLine + GlobaleVariabeln.loggedInUser;
 
-            mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+           
 
             query = "SELECT username,vorname,geburtsdatum FROM user";
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
@@ -41,15 +51,22 @@ namespace Datingseite.Pages
             
 
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            TestseitePage1 testseitePage = new TestseitePage1();
+            NavigationService.Navigate(testseitePage);
+        }
 
-            Tinderseite tinderseite = new Tinderseite();
-            NavigationService.Navigate(tinderseite);
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+        }
 
-                      
-
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Window1 w1 = new Window1();
+            w1.Show();
         }
     }
 }

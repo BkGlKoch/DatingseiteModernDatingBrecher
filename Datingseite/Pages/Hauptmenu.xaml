@@ -38,7 +38,7 @@
 
         </StackPanel>
 
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" Margin="0,5,5,0">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" Margin="0,40,5,0">
             <TextBlock Text="Eingeloggt als" FontSize="15" Name="textBlockLoggeInAs"/>
         </StackPanel>
 
@@ -47,10 +47,10 @@
             <Button Content="Partner Finden" FontSize="15" Click="Button_Click"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"  Margin="5,0,5,0">
             <TextBlock Text="Gefundene Partner:" FontSize="20" TextAlignment="Center"/>
 
-            <DataGrid Name="matchesDatagrid" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid Name="matchesDatagrid" AutoGenerateColumns="False" CanUserAddRows="False" AreRowDetailsFrozen="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding username}" Header="Username" Width="2*" x:Name="gvUsername"/>
                     <DataGridTextColumn Binding="{Binding vorname}" Header="Vorname" Width="1.5*" x:Name="gvVorname"/>
@@ -58,5 +58,13 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,0,0">
+            <Button Content="Profil" FontSize="15" Width="100" Click="Button_Click_2"/>
+        </StackPanel>
+
+        
+        
+        
     </Grid>
 </Page>

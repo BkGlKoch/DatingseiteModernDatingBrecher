@@ -41,5 +41,15 @@ namespace Datingseite.Pages
             
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            Tinderseite tinderseite = new Tinderseite();
+            NavigationService.Navigate(tinderseite);
+
+                      
+
+        }
     }
 }

@@ -21,10 +21,21 @@ namespace Datingseite
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
+
         public MainWindow()
         {
             InitializeComponent();
             Main.Content = new Pages.Hauptmenu();
+
+        }
+
+
+        public Frame asd()
+        {
+
+            return (Main);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

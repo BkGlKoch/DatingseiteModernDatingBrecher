@@ -8,7 +8,7 @@ namespace Datingseite
 {
     class GlobaleVariabeln
     {
-        public static string globalMySqlConnection = "server=localhost; port=3306; username=Datingseite; password=schönenabendnoch45613; database=modernDating";
+        public static string globalMySqlConnection = "server=localhost; port=3306; username=root; password=...mysql...; database=modernDating";
         public static string loggedInUser = "";
         public static MySqlConnection mySqlCon;
         public static MySqlCommand sqlCommand;

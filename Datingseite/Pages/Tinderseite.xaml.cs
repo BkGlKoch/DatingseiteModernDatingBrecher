@@ -33,9 +33,22 @@ namespace Datingseite.Pages
 
         private void Grid_KeyDown_1(object sender, KeyEventArgs e)
         {
-            
+            if(e.Key == Key.A)
+            {
+                Hauptmenu hauptmenu = new Hauptmenu();
+                NavigationService.Navigate(hauptmenu);
+            }
+            else if(e.Key == Key.D)
+            {
+                Hauptmenu hauptmenu = new Hauptmenu();
+                NavigationService.Navigate(hauptmenu);
+            }
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Hauptmenu hauptmenu = new Hauptmenu();
+            NavigationService.Navigate(hauptmenu);
+        }
     }
 }

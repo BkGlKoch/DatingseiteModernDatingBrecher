@@ -87,5 +87,25 @@ namespace Datingseite.Pages
             this.Content = testseitePage;
              
         }
+
+        private void TheGrid_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            theGrid.Focus();
+        }
+
+        private void Grid_KeyDown_1(object sender, KeyEventArgs e)
+        {
+              if(e.Key == Key.Back)
+            {
+                Hauptmenu hauptmenu = new Hauptmenu();
+                this.Close();
+            }
+        }
+
+
+        private void Border_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

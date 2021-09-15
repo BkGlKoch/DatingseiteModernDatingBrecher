@@ -96,5 +96,10 @@ namespace Datingseite
                 MessageBox.Show("Falscher Nutzername oder falsches Passwort!");
             }
         }
+
+        private void loginButton_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

@@ -14,6 +14,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Media;
+using MySql.Data.MySqlClient;
 
 namespace Datingseite.Pages
 {
@@ -31,10 +32,12 @@ namespace Datingseite.Pages
             textboxName.Text = "Name: " + GlobaleVariabeln.name;
             textboxGender.Text = "Geschlecht: " + GlobaleVariabeln.gender;
             textboxAge.Text = "Alter: " + GlobaleVariabeln.birthday;
-            textboxDescription.Text = "Beschreibung: " + GlobaleVariabeln.description;
+            textboxDescriptionChange.Text = GlobaleVariabeln.description;
             
         }
 
+        MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+        static string query;
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -106,6 +109,29 @@ namespace Datingseite.Pages
         private void Border_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void textboxDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void textboxDescriptionChange_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                string beschreibung = textboxDescriptionChange.Text;
+                query = "INSERT INTO user (`beschreibung`) VALUES ('" + beschreibung + "');";
+
+                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+
+
+
+                MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
+                mySqlCon.Open();
+                sqlCommand.ExecuteNonQuery();
+                mySqlCon.Close();
+            }
         }
     }
 }

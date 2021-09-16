@@ -22,8 +22,10 @@ namespace Datingseite.Pages
         {
           
             InitializeComponent();
-            
-           
+
+            TinderMethods.getRandomTinder();
+            updateLables();
+
         }
 
         private void TheGrid_OnLoaded(object sender, RoutedEventArgs e)
@@ -49,6 +51,29 @@ namespace Datingseite.Pages
         {
             Hauptmenu hauptmenu = new Hauptmenu();
             NavigationService.Navigate(hauptmenu);
+        }
+
+        private void YesButton_Click(object sender, RoutedEventArgs e)
+        {
+            TinderMethods.getRandomTinder();
+            updateLables();
+
+        }
+
+        private void NoButton_Click(object sender, RoutedEventArgs e)
+        {
+            TinderMethods.getRandomTinder();
+            updateLables();
+        }
+
+
+        private void updateLables()
+        {
+
+            textboxName.Text = TinderMethods.name;
+            textboxAge.Text = TinderMethods.birthday;
+            textboxGender.Text = TinderMethods.gender;
+            textboxDescription.Text = TinderMethods.description;
         }
     }
 }

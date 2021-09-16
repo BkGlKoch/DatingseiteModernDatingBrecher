@@ -8,7 +8,7 @@
         Title="Window1" Height="450" Width="800"
         AllowsTransparency="True"
         WindowStyle="None">
-    
+
     <Grid x:Name="theGrid" KeyDown="Grid_KeyDown_1" Focusable="True" Loaded="TheGrid_OnLoaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
@@ -16,7 +16,7 @@
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
 
-        
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
@@ -30,12 +30,20 @@
                     <GradientStop Color="White" Offset="1" />
                 </LinearGradientBrush>
             </Border.Background>
-            <Button Content="change" Margin="67,61,618,350" Click="Button_Click_1"/>
+            <TextBox FontWeight="Light"
+                    Text="&#xD;&#xA;"
+                    FontSize="22"
+                    Background="Transparent"
+                    BorderThickness="0,0,0,1"
+                    HorizontalContentAlignment="Left"
+                    x:Name="textboxDescriptionChange"
+                    IsEnabled="True" Margin="400,256,0,163" KeyDown="textboxDescriptionChange_KeyDown"/>
+
         </Border>
 
         <StackPanel Grid.Row="1" Grid.Column="2">
-            
-            
+
+
             <TextBox FontWeight="Light"
                     Text="Username:"
                     FontSize="22"
@@ -82,19 +90,19 @@
                     Background="Transparent"
                     BorderThickness="0,0,0,1"
                     HorizontalContentAlignment="Left"
-                    Width="525"
+                    Width="528"
                     x:Name="textboxGender"
                     IsEnabled="False"/>
+            <TextBox Text="Beschreibung:" 
+                TextWrapping="Wrap"
+                FontSize="22"
+                Background="Transparent"
+                BorderThickness="0,0,0,1" 
+                FontWeight="Light"
+                HorizontalAlignment="Left"
+                x:Name="descriptionBoxName" Width="147" IsEnabled="False"/>
 
-            <TextBox FontWeight="Light"
-                    Text="Description:"
-                    FontSize="22"
-                    Background="Transparent"
-                    BorderThickness="0,0,0,1"
-                    HorizontalContentAlignment="Left"
-                    Width="525"
-                    x:Name="textboxDescription"
-                    IsEnabled="False"/>
+
         </StackPanel>
 
 
@@ -112,7 +120,7 @@
             <Image Source="/NoPbImage.png" MouseUp = "Image_MouseUp" Name = "profilePicture" Width="266" Height ="266"/>
         </StackPanel >
 
-        <Button Content="zurück" Margin="10,18,110,10" Grid.Row="2" Click="Button_Click"> </Button>
+        <Button Content="zurück" Margin="10,18,110,10" Grid.Row="2" Click="Button_Click"></Button>
 
     </Grid>
 </Window>

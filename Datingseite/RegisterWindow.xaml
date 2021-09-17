@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="RegisterWindow" Height="500" Width="800" AllowsTransparency="True" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="/icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>

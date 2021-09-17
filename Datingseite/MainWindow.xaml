@@ -9,7 +9,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        MouseDown="Window_MouseDown">
+        MouseDown="Window_MouseDown" Icon="/icon.ico">
     <Grid>
         <Frame x:Name="Main" Margin="0,0,0,0" NavigationUIVisibility="Hidden"/>
     </Grid>

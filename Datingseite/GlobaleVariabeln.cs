@@ -9,7 +9,7 @@ namespace Datingseite
     class GlobaleVariabeln
     {
 
-        public static string globalMySqlConnection = "server=localhost; port=3306; username=root; password=...mysql...; database=modernDating";
+        public static string globalMySqlConnection = "server=localhost; port=3306; username=root; password=1234; database=modernDating";
         public static string username = "";
         public static string firstname = "";
         public static string name = "";

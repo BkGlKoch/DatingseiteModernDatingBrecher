@@ -66,8 +66,9 @@ namespace Datingseite.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Window1 w1 = new Window1();
-            w1.Show();
+            Window1 window = new Window1();
+            window.Show();
+
         }
     }
 }

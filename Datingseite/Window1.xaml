@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Datingseite.Pages"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800"
+        Title="Profilseite" Height="450" Width="800"
         AllowsTransparency="True"
-        WindowStyle="None">
+        WindowStyle="None" Icon="/icon.ico">
 
     <Grid x:Name="theGrid" KeyDown="Grid_KeyDown_1" Focusable="True" Loaded="TheGrid_OnLoaded">
         <Grid.RowDefinitions>

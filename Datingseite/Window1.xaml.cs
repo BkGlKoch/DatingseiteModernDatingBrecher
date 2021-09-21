@@ -15,6 +15,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Datingseite.Pages
 {
@@ -23,6 +24,7 @@ namespace Datingseite.Pages
     /// </summary>
     public partial class Window1 : Window
     {
+        MySqlCommand sqlCommand;
         public Window1()
         {
             InitializeComponent();
@@ -33,7 +35,33 @@ namespace Datingseite.Pages
             textboxGender.Text = "Geschlecht: " + GlobaleVariabeln.gender;
             textboxAge.Text = "Alter: " + GlobaleVariabeln.birthday;
             textboxDescriptionChange.Text = GlobaleVariabeln.description;
-            
+
+            try //Versucht das Profilbild aus der Datenbank zu laden.
+            {
+                MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+                string query = "SELECT profilbild FROM user WHERE username ='" + GlobaleVariabeln.username + "'";
+                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+                DataTable dt = new DataTable();
+                mySqlDataAdapter.Fill(dt);
+
+                sqlCommand = new MySqlCommand(query, mySqlCon);
+
+                mySqlCon.Open();
+                sqlCommand.ExecuteNonQuery();
+                mySqlCon.Close();
+
+                BitmapImage bitmap = new BitmapImage();
+
+                byte[] byteArray = (byte[])dt.Rows[0].ItemArray[0];
+
+                bitmap = convertByteArrayToBitmap(byteArray);
+
+                profilePicture.Source = bitmap;
+            }
+            catch
+            {
+            }
+
         }
 
         MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
@@ -59,7 +87,18 @@ namespace Datingseite.Pages
                 profilePicture.Source = bitmap;
 
                 byte[] imageBytes = convertBitmapImageToByteArray(bitmap);
-                bitmap = convertByteArrayToBitmap(imageBytes);
+
+                string query = "UPDATE user SET profilbild= @Content WHERE username='" + GlobaleVariabeln.username + "';";
+                MySqlConnection cn = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+                MySqlCommand cmd = new MySqlCommand(query, cn);
+                MySqlParameter sqlParameter = cmd.Parameters.Add("@Content", MySqlDbType.Binary);
+                sqlParameter.Value = imageBytes;
+
+                string byteArrayString = BitConverter.ToString(imageBytes);
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
             }
         }
         byte[] convertBitmapImageToByteArray(BitmapImage bmpImage)

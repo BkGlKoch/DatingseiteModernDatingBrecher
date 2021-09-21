@@ -160,11 +160,9 @@ namespace Datingseite.Pages
             if(e.Key == Key.Enter)
             {
                 string beschreibung = textboxDescriptionChange.Text;
-                query = "INSERT INTO user (`beschreibung`) VALUES ('" + beschreibung + "');";
+                query = "UPDATE user SET beschreibung= '"+ beschreibung +"' WHERE username='" + GlobaleVariabeln.username + "';";
 
                 MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
-
-
 
                 MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
                 mySqlCon.Open();

@@ -30,7 +30,7 @@
                     <GradientStop Color="White" Offset="1" />
                 </LinearGradientBrush>
             </Border.Background>
-            <Button Content="Exit" Margin="0,10,748,400" Click="Button_Click"/>
+            <Image Margin="212,22,212,223" Name="profilbildbox"/>
 
         </Border>
 

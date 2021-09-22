@@ -36,9 +36,9 @@ namespace Datingseite.Pages
         public Hauptmenu()
         {
             InitializeComponent();
-            textBlockLoggeInAs.Text = "Eingeloggt als: "+ Environment.NewLine + GlobaleVariabeln.username;
+            textBlockLoggeInAs.Text = "Eingeloggt als: " + Environment.NewLine + GlobaleVariabeln.username;
 
-           
+
 
             query = "SELECT username,vorname,geburtsdatum FROM user";
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
@@ -48,26 +48,31 @@ namespace Datingseite.Pages
             mySqlDataAdapter.Fill(dt);
 
             matchesDatagrid.ItemsSource = dt.DefaultView;
-            
+
 
         }
-        
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+
             Tinderseite tinderseite = new Tinderseite();
             NavigationService.Navigate(tinderseite);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Window1 window = new Window1();
             window.Show();
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
 
         }
     }

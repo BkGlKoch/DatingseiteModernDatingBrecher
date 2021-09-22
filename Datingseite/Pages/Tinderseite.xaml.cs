@@ -24,6 +24,10 @@ namespace Datingseite.Pages
             InitializeComponent();
 
             TinderMethods.getRandomTinder();
+
+            BitmapImage bitmap = GlobaleVariabeln.loadProfilBild(TinderMethods.tinderUserName);
+            profilbildbox.Source = bitmap;
+
             updateLables();
 
         }
@@ -70,10 +74,10 @@ namespace Datingseite.Pages
         private void updateLables()
         {
 
-            textboxName.Text = TinderMethods.name;
-            textboxAge.Text = TinderMethods.birthday;
-            textboxGender.Text = TinderMethods.gender;
-            textboxDescription.Text = TinderMethods.description;
+            textboxName.Text = TinderMethods.tinderName;
+            textboxAge.Text = TinderMethods.tinderBirthday;
+            textboxGender.Text = TinderMethods.tinderBirthday;
+            textboxDescription.Text = TinderMethods.tinderDescription;
         }
     }
 }

@@ -117,10 +117,12 @@
         </StackPanel>
 
         <StackPanel Grid.Row = "1" Grid.Column = "0" >
-            <Image Source="/NoPbImage.png" MouseUp = "Image_MouseUp" Name = "profilePicture" Width="266" Height ="266"/>
+            <Image Source="C:\Users\fabian\Documents\GitHub\DatingseiteModernDatingBrecher\Datingseite\NoPbImage.png" MouseUp = "Image_MouseUp" Name = "profilePicture" Width="266" Height ="266"/>
         </StackPanel >
 
-        <Button Content="zurück" Margin="10,18,110,10" Grid.Row="2" Click="Button_Click"></Button>
+        <Button Content="zurück" Margin="10,27,172,10" Grid.Row="2" Click="Button_Click"></Button>
+        <Button Content="Profilbild setzten!" Name="profilbildsetzten" Margin="61,61,61,5" RenderTransformOrigin="-0.331,-1.354" Click="profilbildsetzten_Click"/>
+
 
     </Grid>
 </Window>

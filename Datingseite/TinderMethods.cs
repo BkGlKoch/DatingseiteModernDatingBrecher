@@ -12,13 +12,13 @@ namespace Datingseite
         MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
         static string query;
 
-        public static string fullname = "";
-        public static string username = "";
-        public static string firstname = "";
-        public static string name = "";
-        public static string birthday = "";
-        public static string description = "";
-        public static string gender = "";
+        public static string tinderFullName = "";
+        public static string tinderUserName = "Username";
+        public static string tinderFirstName = "";
+        public static string tinderName = "";
+        public static string tinderBirthday = "";
+        public static string tinderDescription = "";
+        public static string tinderGender = "";
 
 
 
@@ -56,12 +56,12 @@ namespace Datingseite
 
             
             username = dt.Rows[0].ItemArray[6].ToString();
-            firstname = dt.Rows[0].ItemArray[2].ToString();
-            name = dt.Rows[0].ItemArray[1].ToString();
-            gender = dt.Rows[0].ItemArray[4].ToString();
-            description = dt.Rows[0].ItemArray[5].ToString();
-            birthday = dt.Rows[0].ItemArray[3].ToString();
-            fullname = firstname + " " + name;
+            tinderFirstName = dt.Rows[0].ItemArray[2].ToString();
+            tinderName = dt.Rows[0].ItemArray[1].ToString();
+            tinderGender = dt.Rows[0].ItemArray[4].ToString();
+            tinderDescription = dt.Rows[0].ItemArray[5].ToString();
+            tinderBirthday = dt.Rows[0].ItemArray[3].ToString();
+            tinderFullName = tinderFirstName + " " + tinderName;
 
 
         }

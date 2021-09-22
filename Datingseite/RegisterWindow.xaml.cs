@@ -66,6 +66,11 @@ namespace Datingseite
                 mySqlCon.Close();
 
                 GlobaleVariabeln.username = textboxUsername.Text;
+                GlobaleVariabeln.name = textboxNachname.Text;
+                GlobaleVariabeln.firstname = textboxVorname.Text;
+                GlobaleVariabeln.birthday = birthdayDatePicker.Text;
+                GlobaleVariabeln.gender = genderPicker.Text;
+                GlobaleVariabeln.description = testBeschreibung;
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

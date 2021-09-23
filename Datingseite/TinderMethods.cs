@@ -24,12 +24,13 @@ namespace Datingseite
         public static string tinderBirthday = "";
         public static string tinderDescription = "";
         public static string tinderGender = "";
+        public static int tinderIdUser;
 
 
         public static void getNewTinder()
         {
 
-            
+
             randomuser = random.Next(1, GetIndexLong() + 1);
 
             query = "SELECT * FROM user WHERE idUser = '" + randomuser + "'";
@@ -42,13 +43,14 @@ namespace Datingseite
 
 
 
-            
+
             tinderUserName = dt.Rows[0].ItemArray[6].ToString();
             tinderFirstName = dt.Rows[0].ItemArray[2].ToString();
             tinderName = dt.Rows[0].ItemArray[1].ToString();
             tinderGender = dt.Rows[0].ItemArray[4].ToString();
             tinderDescription = dt.Rows[0].ItemArray[5].ToString();
             tinderBirthday = dt.Rows[0].ItemArray[3].ToString();
+            tinderIdUser = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
             tinderFullName = tinderFirstName + " " + tinderName;
 
 

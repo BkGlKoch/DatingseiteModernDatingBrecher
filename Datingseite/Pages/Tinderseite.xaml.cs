@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace Datingseite.Pages
 {
@@ -60,17 +61,22 @@ namespace Datingseite.Pages
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
+            string query = "INSERT INTO matches (idUser1, idUser2) VALUES ('" + GlobaleVariabeln.userid + "','" + TinderMethods.tinderIdUser + "')";
+            MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+            MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
+            mySqlCon.Open();
+            sqlCommand.ExecuteNonQuery();
+            mySqlCon.Close();
+
 
             TinderMethods.getNewTinder();
             updateData();
-
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
-
             TinderMethods.getNewTinder();
-            updateData();
+            updateData();          
         }
 
 

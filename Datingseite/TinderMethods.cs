@@ -9,12 +9,6 @@ namespace Datingseite
 {
     class TinderMethods
     {
-        static Random random = new Random();
-        static int maxuser;
-        static int randomuser;
-
-
-        MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
         static string query;
 
         public static string tinderFullName = "";
@@ -26,14 +20,26 @@ namespace Datingseite
         public static string tinderGender = "";
         public static int tinderIdUser;
 
+        static int iterator = 1;
+
 
         public static void getNewTinder()
         {
 
+            if (iterator != GlobaleVariabeln.userid && iterator != GetIndexLong())
+            {
+                query = "SELECT * FROM user WHERE idUser = '" + iterator + "'";
+                iterator++;
 
-            randomuser = random.Next(1, GetIndexLong() + 1);
+            }
+            else
+            {
+                iterator++;
+                query = "SELECT * FROM user WHERE idUser = '" + iterator + "'";
+            }
 
-            query = "SELECT * FROM user WHERE idUser = '" + randomuser + "'";
+
+
 
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
@@ -43,34 +49,41 @@ namespace Datingseite
 
 
 
-
-            tinderUserName = dt.Rows[0].ItemArray[6].ToString();
-            tinderFirstName = dt.Rows[0].ItemArray[2].ToString();
-            tinderName = dt.Rows[0].ItemArray[1].ToString();
-            tinderGender = dt.Rows[0].ItemArray[4].ToString();
-            tinderDescription = dt.Rows[0].ItemArray[5].ToString();
-            tinderBirthday = dt.Rows[0].ItemArray[3].ToString();
-            tinderIdUser = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
-            tinderFullName = tinderFirstName + " " + tinderName;
+            try
+            {
+                tinderUserName = dt.Rows[0].ItemArray[6].ToString();
+                tinderFirstName = dt.Rows[0].ItemArray[2].ToString();
+                tinderName = dt.Rows[0].ItemArray[1].ToString();
+                tinderGender = dt.Rows[0].ItemArray[4].ToString();
+                tinderDescription = dt.Rows[0].ItemArray[5].ToString();
+                tinderBirthday = dt.Rows[0].ItemArray[3].ToString();
+                tinderFullName = tinderFirstName + " " + tinderName;
+                tinderIdUser = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
+            }
+            catch
+            {
+                iterator++;
+            }
 
 
         }
 
         public static int GetIndexLong()
         {
-       
+
             using (MySqlConnection conn = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM user", conn))
                 {
                     conn.Open();
                     int value = int.Parse(cmd.ExecuteScalar().ToString());
+
                     conn.Dispose();
-                    return value;
+                    return value + 1;
                 }
 
             }
-          
+
         }
 
     }

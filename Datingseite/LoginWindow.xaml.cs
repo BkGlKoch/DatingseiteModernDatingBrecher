@@ -84,6 +84,7 @@ namespace Datingseite
                 GlobaleVariabeln.gender = dt.Rows[0].ItemArray[4].ToString();
                 GlobaleVariabeln.description = dt.Rows[0].ItemArray[5].ToString();
                 GlobaleVariabeln.birthday = dt.Rows[0].ItemArray[3].ToString();
+                
 
 
                 MainWindow mainWindow = new MainWindow();

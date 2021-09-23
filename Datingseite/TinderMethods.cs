@@ -2,18 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace Datingseite
 {
     class TinderMethods
     {
+        static Random random = new Random();
+        static int maxuser;
+        static int randomuser;
+
 
         MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
         static string query;
 
         public static string tinderFullName = "";
-        public static string tinderUserName = "Username";
+        public static string tinderUserName = "";
         public static string tinderFirstName = "";
         public static string tinderName = "";
         public static string tinderBirthday = "";
@@ -21,31 +26,13 @@ namespace Datingseite
         public static string tinderGender = "";
 
 
-
-        public void setTinderYes(string partnerusername)
+        public static void getNewTinder()
         {
 
-            getRandomTinder();
-        }
-
-        public void setTinderNo(string partnerusername)
-        {
-
-            getRandomTinder();
-        }
-
-        public static void getRandomTinder()
-        {
-            getTinderData("Username");
             
-            
-        }
+            randomuser = random.Next(1, GetIndexLong() + 1);
 
-        private static void getTinderData(string username)
-        {
-           
-
-            query = "SELECT * FROM user WHERE username = '" + username + "'";
+            query = "SELECT * FROM user WHERE idUser = '" + randomuser + "'";
 
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
@@ -54,8 +41,9 @@ namespace Datingseite
             mySqlDataAdapter.Fill(dt);
 
 
+
             
-            username = dt.Rows[0].ItemArray[6].ToString();
+            tinderUserName = dt.Rows[0].ItemArray[6].ToString();
             tinderFirstName = dt.Rows[0].ItemArray[2].ToString();
             tinderName = dt.Rows[0].ItemArray[1].ToString();
             tinderGender = dt.Rows[0].ItemArray[4].ToString();
@@ -66,6 +54,22 @@ namespace Datingseite
 
         }
 
+        public static int GetIndexLong()
+        {
+       
+            using (MySqlConnection conn = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM user", conn))
+                {
+                    conn.Open();
+                    int value = int.Parse(cmd.ExecuteScalar().ToString());
+                    conn.Dispose();
+                    return value;
+                }
+
+            }
+          
+        }
 
     }
 }

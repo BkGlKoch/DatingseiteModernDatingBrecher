@@ -18,17 +18,17 @@ namespace Datingseite.Pages
     /// </summary>
     public partial class Tinderseite : Page
     {
+
+    
+
         public Tinderseite()
         {
           
             InitializeComponent();
 
-            TinderMethods.getRandomTinder();
+            TinderMethods.getNewTinder();
 
-            BitmapImage bitmap = GlobaleVariabeln.loadProfilBild(TinderMethods.tinderUserName);
-            profilbildbox.Source = bitmap;
-
-            updateLables();
+            updateData();
 
         }
 
@@ -41,13 +41,14 @@ namespace Datingseite.Pages
         {
             if(e.Key == Key.A)
             {
-                Hauptmenu hauptmenu = new Hauptmenu();
-                NavigationService.Navigate(hauptmenu);
+                TinderMethods.getNewTinder();
+                updateData();
+
             }
             else if(e.Key == Key.D)
             {
-                Hauptmenu hauptmenu = new Hauptmenu();
-                NavigationService.Navigate(hauptmenu);
+                TinderMethods.getNewTinder();
+                updateData();
             }
         }
 
@@ -59,25 +60,32 @@ namespace Datingseite.Pages
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            TinderMethods.getRandomTinder();
-            updateLables();
+
+            TinderMethods.getNewTinder();
+            updateData();
 
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
-            TinderMethods.getRandomTinder();
-            updateLables();
+
+            TinderMethods.getNewTinder();
+            updateData();
         }
 
 
-        private void updateLables()
+        private void updateData()
         {
 
-            textboxName.Text = TinderMethods.tinderName;
+            BitmapImage bitmap = GlobaleVariabeln.loadProfilBild(TinderMethods.tinderUserName);
+            profilbildbox.Source = bitmap;
+
+            textboxName.Text = TinderMethods.tinderFullName;
             textboxAge.Text = TinderMethods.tinderBirthday;
-            textboxGender.Text = TinderMethods.tinderBirthday;
+            textboxGender.Text = TinderMethods.tinderGender;
             textboxDescription.Text = TinderMethods.tinderDescription;
         }
+
+        
     }
 }

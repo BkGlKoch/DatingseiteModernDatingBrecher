@@ -19,6 +19,7 @@ namespace Datingseite
         public static string birthday = "";
         public static string description = "";
         public static string gender = "";
+        public static int userid = 3;
        
         
 

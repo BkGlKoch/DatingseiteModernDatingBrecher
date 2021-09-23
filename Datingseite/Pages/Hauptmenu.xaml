@@ -26,8 +26,8 @@
                     <GradientStop Color="White" Offset="1" />
                 </LinearGradientBrush>
             </Border.Background>
-            
-            <Button Content="Button" Margin="542,354,64,34" Click="Button_Click_3" Visibility="Hidden"/>
+
+            <Button Content="Open Login" IsCancel="True" FontSize="15" Click="Button_Click_3" Margin="594,10,118,416"/>
         </Border>
 
 
@@ -65,8 +65,8 @@
             <Button Content="Profil" FontSize="15" Width="100" Click="Button_Click_2"/>
         </StackPanel>
 
-        
-        
-        
+
+
+
     </Grid>
 </Page>

@@ -31,13 +31,6 @@ namespace Datingseite
 
         }
 
-
-        public Frame asd()
-        {
-
-            return (Main);
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             

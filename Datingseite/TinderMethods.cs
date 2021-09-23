@@ -21,21 +21,29 @@ namespace Datingseite
         public static int tinderIdUser;
 
         static int iterator = 1;
+        static Boolean nextTinderPossible = true;
 
 
         public static void getNewTinder()
         {
 
+            if(iterator == GetIndexLong())
+            {
+                nextTinderPossible = false;
+            }
+
             if (iterator != GlobaleVariabeln.userid && iterator != GetIndexLong())
             {
                 query = "SELECT * FROM user WHERE idUser = '" + iterator + "'";
                 iterator++;
+           
 
             }
             else
             {
                 iterator++;
                 query = "SELECT * FROM user WHERE idUser = '" + iterator + "'";
+         
             }
 
 
@@ -59,13 +67,22 @@ namespace Datingseite
                 tinderBirthday = dt.Rows[0].ItemArray[3].ToString();
                 tinderFullName = tinderFirstName + " " + tinderName;
                 tinderIdUser = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
+
+            
             }
             catch
             {
+
                 iterator++;
+                nextTinderPossible = false;
             }
 
 
+        }
+
+        public static Boolean isNextTinderPossible()
+        {
+            return nextTinderPossible;
         }
 
         public static int GetIndexLong()

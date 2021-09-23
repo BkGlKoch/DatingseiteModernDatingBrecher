@@ -20,16 +20,22 @@ namespace Datingseite.Pages
     public partial class Tinderseite : Page
     {
 
+        
     
-
         public Tinderseite()
         {
           
             InitializeComponent();
 
+           if (TinderMethods.isNextTinderPossible()) { 
             TinderMethods.getNewTinder();
-
             updateData();
+           }else
+
+           {
+                setTinderEnd();
+           }
+
 
         }
 
@@ -40,8 +46,11 @@ namespace Datingseite.Pages
 
         private void Grid_KeyDown_1(object sender, KeyEventArgs e)
         {
+            if (TinderMethods.isNextTinderPossible()) { 
+                
             if(e.Key == Key.A)
             {
+               
                 TinderMethods.getNewTinder();
                 updateData();
 
@@ -50,6 +59,10 @@ namespace Datingseite.Pages
             {
                 TinderMethods.getNewTinder();
                 updateData();
+            }
+            }else
+            {
+                setTinderEnd();
             }
         }
 
@@ -61,22 +74,35 @@ namespace Datingseite.Pages
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            string query = "INSERT INTO matches (idUser1, idUser2) VALUES ('" + GlobaleVariabeln.userid + "','" + TinderMethods.tinderIdUser + "')";
-            MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
-            MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
-            mySqlCon.Open();
-            sqlCommand.ExecuteNonQuery();
-            mySqlCon.Close();
+            if (TinderMethods.isNextTinderPossible())
+            {
+                string query = "INSERT INTO matches (idUser1, idUser2) VALUES ('" + GlobaleVariabeln.userid + "','" + TinderMethods.tinderIdUser + "')";
+                MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+                MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
+                mySqlCon.Open();
+                sqlCommand.ExecuteNonQuery();
+                mySqlCon.Close();
 
 
-            TinderMethods.getNewTinder();
-            updateData();
+                TinderMethods.getNewTinder();
+                updateData();
+            }else
+            {
+                setTinderEnd();
+            }
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
-            TinderMethods.getNewTinder();
-            updateData();          
+            if (TinderMethods.isNextTinderPossible())
+            {
+                TinderMethods.getNewTinder();
+                updateData();
+            }
+            else
+            {
+                setTinderEnd();
+            }
         }
 
 
@@ -92,6 +118,14 @@ namespace Datingseite.Pages
             textboxDescription.Text = TinderMethods.tinderDescription;
         }
 
+        private void setTinderEnd()
+        {
+
+            textboxName.Text = "Kein";
+            textboxAge.Text = "Tinder";
+            textboxGender.Text = "mehr";
+            textboxDescription.Text = "da :(";
+        }
         
     }
 }

@@ -69,11 +69,16 @@ namespace Datingseite.Pages
             Window1 window = new Window1();
             window.Show();
 
+            
+
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();  
+       
+            
         }
     }
 }

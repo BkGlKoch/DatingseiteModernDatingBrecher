@@ -75,8 +75,7 @@ namespace Datingseite.Pages
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();  
+            Application.Current.Shutdown();
        
             
         }

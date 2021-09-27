@@ -27,7 +27,7 @@
                 </LinearGradientBrush>
             </Border.Background>
 
-            <Button Content="Open Login" IsCancel="True" FontSize="15" Click="Button_Click_3" Margin="594,10,118,416"/>
+            <Button Content="App Close" IsCancel="True" FontSize="15" Click="Button_Click_3" Margin="594,10,118,416"/>
         </Border>
 
 

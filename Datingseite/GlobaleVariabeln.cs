@@ -12,7 +12,7 @@ namespace Datingseite
     {
         static MySqlCommand sqlCommand;
 
-        public static string globalMySqlConnection = "server=localhost; port=3306; username=root; password=...mysql...; database=moderndating";
+        public static string globalMySqlConnection = "server=localhost; port=3306; username=root; password=1234; database=moderndating";
         public static string username = "";
         public static string firstname = "";
         public static string name = "";
@@ -53,6 +53,24 @@ namespace Datingseite
                 return null;
             }
 
+        }
+
+        public static int getUserIdbyUsername(String username)
+        {
+            MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
+
+            mySqlCon.Open();
+
+            string query = "SELECT idUser FROM user WHERE username ='" + username + "'";
+            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+            DataTable dt = new DataTable();
+            mySqlDataAdapter.Fill(dt);
+
+            
+
+            return Convert.ToInt32(dt.Rows[0].ItemArray[0]);
+
+            
         }
 
         static byte[] convertBitmapImageToByteArray(BitmapImage bmpImage)

@@ -55,19 +55,20 @@ namespace Datingseite
             }
            else
             {
-               // string query = "";
-               // MySqlConnection mySqlCon = new MySqlConnection("server=localhost; port=3306; username=root; password=...mysql...; database=moderndating";
-               // query = "INSERT INTO user (`nachname`, `vorname`, `geburtsdatum`, `geschlecht`, `beschreibung`, `username`, `password`) VALUES ('" + textboxNachname.Text + "','" + textboxVorname.Text + "','" + formatedDateForMySql + "','" + genderPicker.SelectionBoxItem.ToString()+ "','" + testBeschreibung + "','" + textboxUsername.Text + "','" + passwordBox.Password + "');";
-               // MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
-               //mySqlCon.Open();
-               //sqlCommand.ExecuteNonQuery();
-               // mySqlCon.Close();
 
                 string formatedDateForMySql = birthdayDatePicker.SelectedDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 string testBeschreibung = "Hier steht etwas über mich.";
                 query = "INSERT INTO user (`nachname`, `vorname`, `geburtsdatum`, `geschlecht`, `beschreibung`, `username`, `password`) VALUES ('" + textboxNachname.Text + "','" + textboxVorname.Text + "','" + formatedDateForMySql + "','" + genderPicker.SelectionBoxItem.ToString()+ "','" + testBeschreibung + "','" + textboxUsername.Text + "','" + passwordBox.Password + "');";
 
                 MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
+
+                mySqlCon.Open();
+                sqlCommand.ExecuteNonQuery();
+                mySqlCon.Close();
+
+                query = "INSERT INTO tinderdone (userID, tinderdones) VALUES ('" + GlobaleVariabeln.getUserIdbyUsername(textboxUsername.Text) + "','" + " " +  "');";
+
+                sqlCommand = new MySqlCommand(query, mySqlCon);
 
                 mySqlCon.Open();
                 sqlCommand.ExecuteNonQuery();

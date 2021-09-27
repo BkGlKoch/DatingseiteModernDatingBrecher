@@ -33,14 +33,16 @@ namespace Datingseite.Pages
     {
         MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
         string query;
+        String allmatches = "";
+
         public Hauptmenu()
         {
             InitializeComponent();
             textBlockLoggeInAs.Text = "Eingeloggt als: " + Environment.NewLine + GlobaleVariabeln.username;
 
+            loadTinders();
 
-
-            query = "SELECT username,vorname,geburtsdatum FROM user";
+   
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
             DataTable dt = new DataTable();
@@ -78,6 +80,59 @@ namespace Datingseite.Pages
             Application.Current.Shutdown();
        
             
+        }
+
+
+        private void loadTinders()
+        {
+            mySqlCon.Open();
+
+           
+            int howmuchmatches = 0;
+
+            query = "SELECT * FROM matches WHERE idUser1 = '" + GlobaleVariabeln.userid + "'";
+
+            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+
+            DataTable dt = new DataTable();
+            mySqlDataAdapter.Fill(dt);
+
+           // MessageBox.Show("Debug1");
+
+            int User1 = GlobaleVariabeln.userid;
+            
+
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    int User2 = Convert.ToInt32(dt.Rows[i].ItemArray[2]);
+
+              //      MessageBox.Show("" + User1 + " & " + User2);
+
+                    query = "SELECT * FROM matches WHERE idUser1 = '" + User2 + "' AND idUser2 = '" + User1 + "'";
+                    mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+
+                    DataTable dt2 = new DataTable();
+                    mySqlDataAdapter.Fill(dt2);
+
+                    if (dt2.Rows.Count > 0)
+                    {
+                        howmuchmatches++;
+
+                        allmatches += howmuchmatches + ". " + User1 + " & " + User2 + " ";
+                    }
+
+                }
+
+                MessageBox.Show(allmatches);
+
+            }
+            else
+            {
+                MessageBox.Show("Nix ;c");
+            }
+
         }
     }
 }

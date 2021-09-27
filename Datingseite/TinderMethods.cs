@@ -41,8 +41,8 @@ namespace Datingseite
             }
             else
             {
-                iterator++;
-                query = "SELECT * FROM user WHERE idUser = '" + iterator + "'";
+                iterator = iterator + 1;
+                getNewTinder();
          
             }
 
@@ -79,6 +79,9 @@ namespace Datingseite
 
 
         }
+
+
+
 
         public static Boolean isNextTinderPossible()
         {

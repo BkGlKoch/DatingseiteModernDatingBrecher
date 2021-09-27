@@ -22,4 +22,7 @@ idUSer2 int,
 FOREIGN KEY (idUser2) REFERENCES user(idUser)
 );
 
+create table tinderdone(idDone int primary key not null auto_increment, userID int,FOREIGN KEY (userID) REFERENCES user(idUser), tinderdones varchar(1000)
+);
+
 

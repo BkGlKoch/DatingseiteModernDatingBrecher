@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -11,6 +12,8 @@ namespace Datingseite
     {
         static string query;
 
+        public static ArrayList allmatchids = new ArrayList();
+
         public static string tinderFullName = "";
         public static string tinderUserName = "";
         public static string tinderFirstName = "";
@@ -20,19 +23,30 @@ namespace Datingseite
         public static string tinderGender = "";
         public static int tinderIdUser;
 
-        static int iterator = 1;
+
+        public static string matchesFullName = "";
+        public static string matchesUserName = "";
+        public static string matchesFirstName = "";
+        public static string matchesName = "";
+        public static string matchesBirthday = "";
+        public static string matchesDescription = "";
+        public static string matchesGender = "";
+
+        public static int iterator;
         static Boolean nextTinderPossible = true;
 
+        static MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
         public static void getNewTinder()
         {
+            iterator = 1;
 
             if(iterator == GetIndexLong())
             {
                 nextTinderPossible = false;
             }
 
-            if (iterator != GlobaleVariabeln.userid && iterator != GetIndexLong())
+            if (iterator != GlobaleVariabeln.userid && iterator != GetIndexLong() && !allmatchids.Contains(iterator))
             {
                 query = "SELECT * FROM user WHERE idUser = '" + iterator + "'";
                 iterator++;
@@ -49,7 +63,7 @@ namespace Datingseite
 
 
 
-            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+            mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
             DataTable dt = new DataTable();
 
@@ -80,7 +94,33 @@ namespace Datingseite
 
         }
 
+        public static void getUserDataFromUserId(int userid)
+        {
+            query = "SELECT * FROM user WHERE idUser = '" + userid + "'";
 
+            mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+
+            DataTable dt = new DataTable();
+
+            mySqlDataAdapter.Fill(dt);
+
+            if(dt.Rows.Count > 0)
+            {
+                matchesUserName = dt.Rows[0].ItemArray[6].ToString();
+                matchesFirstName = dt.Rows[0].ItemArray[2].ToString();
+                matchesName = dt.Rows[0].ItemArray[1].ToString();
+                matchesGender = dt.Rows[0].ItemArray[4].ToString();
+                matchesDescription = dt.Rows[0].ItemArray[5].ToString();
+                matchesBirthday = dt.Rows[0].ItemArray[3].ToString();
+                matchesFullName = matchesFirstName + " " + matchesName;
+        
+
+            }
+            else
+            {
+               
+            }
+        }
 
 
         public static Boolean isNextTinderPossible()

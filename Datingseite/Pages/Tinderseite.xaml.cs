@@ -49,14 +49,15 @@ namespace Datingseite.Pages
             if (TinderMethods.isNextTinderPossible()) { 
                 
             if(e.Key == Key.A)
-            {
-               
+             { 
+                
                 TinderMethods.getNewTinder();
                 updateData();
 
             }
             else if(e.Key == Key.D)
             {
+                
                 TinderMethods.getNewTinder();
                 updateData();
             }
@@ -76,6 +77,9 @@ namespace Datingseite.Pages
         {
             if (TinderMethods.isNextTinderPossible())
             {
+                
+
+               
                 string query = "INSERT INTO matches (idUser1, idUser2) VALUES ('" + GlobaleVariabeln.userid + "','" + TinderMethods.tinderIdUser + "')";
                 MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
                 MySqlCommand sqlCommand = new MySqlCommand(query, mySqlCon);
@@ -125,6 +129,8 @@ namespace Datingseite.Pages
             textboxAge.Text = "Tinder";
             textboxGender.Text = "mehr";
             textboxDescription.Text = "da :(";
+
+            MessageBox.Show("" + TinderMethods.iterator);
         }
         
     }

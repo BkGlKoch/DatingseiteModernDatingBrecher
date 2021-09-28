@@ -64,26 +64,28 @@ namespace Datingseite
 
                 mySqlCon.Open();
                 sqlCommand.ExecuteNonQuery();
-                mySqlCon.Close();
 
-                query = "INSERT INTO tinderdone (userID, tinderdones) VALUES ('" + GlobaleVariabeln.getUserIdbyUsername(textboxUsername.Text) + "','" + " " +  "');";
+                query = "SELECT idUser FROM user WHERE username ='" + textboxUsername.Text + "'";
 
-                sqlCommand = new MySqlCommand(query, mySqlCon);
+                mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+                dt = new DataTable();
 
-                mySqlCon.Open();
-                sqlCommand.ExecuteNonQuery();
-                mySqlCon.Close();
+                mySqlDataAdapter.Fill(dt);
 
-                GlobaleVariabeln.username = textboxUsername.Text;
-                GlobaleVariabeln.name = textboxNachname.Text;
-                GlobaleVariabeln.firstname = textboxVorname.Text;
-                GlobaleVariabeln.birthday = birthdayDatePicker.Text;
-                GlobaleVariabeln.gender = genderPicker.Text;
-                GlobaleVariabeln.description = testBeschreibung;
+                if (dt.Rows.Count > 0)
+                {
+                    GlobaleVariabeln.userid = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
+                    GlobaleVariabeln.username = textboxUsername.Text;
+                    GlobaleVariabeln.name = textboxNachname.Text;
+                    GlobaleVariabeln.firstname = textboxVorname.Text;
+                    GlobaleVariabeln.birthday = birthdayDatePicker.Text;
+                    GlobaleVariabeln.gender = genderPicker.Text;
+                    GlobaleVariabeln.description = testBeschreibung;
 
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    this.Close();
+                }
             }
             
         }

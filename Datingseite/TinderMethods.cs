@@ -36,6 +36,7 @@ namespace Datingseite
         static Boolean nextTinderPossible = true;
 
         static MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+        static MySqlConnection mysqlcon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
 
         public static void getNewTinder()
         {
@@ -117,6 +118,21 @@ namespace Datingseite
         {
             return nextTinderPossible;
         }
+
+
+        public static void saveInterator(int newIterator)
+        {
+            query = "UPDATE user SET tinders= '" + newIterator + "' WHERE username='" + GlobaleVariabeln.username + "';";
+
+            mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+
+            MySqlCommand sqlCommand = new MySqlCommand(query, mysqlcon);
+            mysqlcon.Open();
+            sqlCommand.ExecuteNonQuery();
+            mysqlcon.Close();
+
+        }
+
 
         public static int GetIndexLong()
         {

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Text;
@@ -39,7 +39,7 @@ namespace Datingseite.Pages
         public Hauptmenu()
         {
             InitializeComponent();
-            textBlockLoggeInAs.Text = "Eingeloggt als: " + Environment.NewLine + GlobaleVariabeln.username;
+            textBlockLoggeInAs.Text = "Eingeloggt als: " + Environment.NewLine + GlobaleVariabeln.username; //
 
             loadTinders();
 
@@ -82,7 +82,7 @@ namespace Datingseite.Pages
         {
             int howmuchmatches = 0;
 
-            query = "SELECT * FROM matches WHERE idUser1 = '" + GlobaleVariabeln.userid + "'";
+            query = "SELECT * FROM matches WHERE idUser1 = '" + GlobaleVariabeln.userid + "'"; 
 
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
@@ -124,7 +124,7 @@ namespace Datingseite.Pages
             }
             else
             {
-                MessageBox.Show("Nix ;c");
+                MessageBox.Show("Keine Matches gefunden >:");
             }
 
         }

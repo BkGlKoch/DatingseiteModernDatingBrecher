@@ -134,7 +134,7 @@ namespace Datingseite
         }
 
 
-        public static int GetIndexLong()
+        public static int GetIndexLong()  // Hier wird gezählt wie viele User registriert sind
         {
             using (MySqlConnection conn = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection))
             {
@@ -143,7 +143,7 @@ namespace Datingseite
                     conn.Open();
                     int value = int.Parse(cmd.ExecuteScalar().ToString());
 
-                    conn.Dispose();
+                    conn.Close();
                     return value;
                 }
             }

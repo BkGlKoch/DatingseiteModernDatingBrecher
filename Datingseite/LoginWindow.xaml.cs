@@ -19,52 +19,38 @@ namespace Datingseite
     /// </summary>
     public partial class LoginWindow : Window
     {
-        MySqlConnection mySqlCon;
-        MySqlCommand sqlCommand;
-        string query;
+       
+
         public LoginWindow()
         {
             InitializeComponent();
         }
 
-        bool doesDatabaseExist()
-        {
-            mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
-            try
-            {
-                mySqlCon.Open();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-
         private void registerLabel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.Show();
-            this.Close();
+        { 
+            RegisterWindow registerWindow = new RegisterWindow(); //Register window wird definiert 
+            registerWindow.Show(); //Register window wird gezeigt
+            this.Close(); //Login fenster wird geschlossen
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection); 
+            MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection); //MySQl Con
 
             string query = "SELECT * FROM user WHERE username = '"+textboxUsername.Text.Trim()+"' AND password = '" + passwordBox.Password.Trim()+"'";
 
-            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection); //MySQl Adapter
 
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable(); //Neuer Datatable wird erstellt 
 
-            mySqlDataAdapter.Fill(dt);
+            mySqlDataAdapter.Fill(dt); //Datatable wird befüllt
 
 
-            if (dt.Rows.Count == 1)
+            if (dt.Rows.Count == 1) //dt.Rows[0].ItemArray[ZAHL] => Row = Reihe im Table => ItemArray = Spalte im Table
             {
+                
+            //Standart GVs werden befüllt
                 GlobaleVariabeln.userid = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
                 GlobaleVariabeln.username = dt.Rows[0].ItemArray[6].ToString();
                 GlobaleVariabeln.firstname = dt.Rows[0].ItemArray[2].ToString();

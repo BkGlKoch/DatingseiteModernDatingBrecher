@@ -10,17 +10,19 @@ namespace Datingseite
 {
     class GlobaleVariabeln
     {
-        static MySqlCommand sqlCommand;
+        static MySqlCommand sqlCommand; //privater MySQL Command
 
-        public static string globalMySqlConnection = "server=localhost; port=3306; username=Datingseite; password=schönenabendnoch45613; database=modernDating";
+        public static string globalMySqlConnection = "server=localhost; port=3306; username=root; password=1234; database=moderndating";
+        // </- Standart MySQL Connection
 
+     // User bezogenen Informationen (Als eingeloggter User) 
         public static string username = "";
         public static string firstname = "";
         public static string name = "";
         public static string birthday = "";
         public static string description = "";
         public static string gender = "";
-        public static int userid = 3;
+        public static int userid = 0;
        
         
 
@@ -28,33 +30,35 @@ namespace Datingseite
         {
             try //Versucht das Profilbild aus der Datenbank zu laden.
             {
-                MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection);
-                string query = "SELECT profilbild FROM user WHERE username ='" + username + "'";
-                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+                MySqlConnection mySqlCon = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection); //MySQL Connection wird 
+                string query = "SELECT profilbild FROM user WHERE username ='" + username + "'"; // Query = SQL Befehl
+
+                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection); // Ist die Verbindung (Kommunikation) zwischen der DB und C#
+
                 DataTable dt = new DataTable();
-                mySqlDataAdapter.Fill(dt);
+                mySqlDataAdapter.Fill(dt); // Der MySQL Adapter befüllt den DataTable
 
-                sqlCommand = new MySqlCommand(query, mySqlCon);
+                sqlCommand = new MySqlCommand(query, mySqlCon); // SQL Command wird definiert (Befehl + DB Verbindung)
 
-                mySqlCon.Open();
-                sqlCommand.ExecuteNonQuery();
-                mySqlCon.Close();
+                mySqlCon.Open();  //MySQL Connection wird geöffnet
+                sqlCommand.ExecuteNonQuery(); // MySQL Befehl wird ausgeführt
+                mySqlCon.Close(); //MySQL Connection wird geschlossen
 
-                BitmapImage bitmap = new BitmapImage();
+                BitmapImage bitmap = new BitmapImage(); // Neue Bitmap wird erstellt
+                 
+                byte[] byteArray = (byte[])dt.Rows[0].ItemArray[0]; // Neues ByteArray wird erstellt, in dem das Convertierte Profilbild gespeichert wird
 
-                byte[] byteArray = (byte[])dt.Rows[0].ItemArray[0];
-
-                bitmap = convertByteArrayToBitmap(byteArray);
+                bitmap = convertByteArrayToBitmap(byteArray); // Bitmap bekommt den Inhalt des ByteArrays
 
 
-                return bitmap;
+                return bitmap; // Die Bitmap wird returnt
             }
             catch
             {
                 return null;
             }
 
-        }
+        } //Methode um Profilbild aus der DB zu laden 
 
         public static int getUserIdbyUsername(String username)
         {
@@ -69,31 +73,20 @@ namespace Datingseite
 
             
 
-            return Convert.ToInt32(dt.Rows[0].ItemArray[0]);
+            return Convert.ToInt32(dt.Rows[0].ItemArray[0]); //UserID wird aus der Datenbank gelesen
 
             
-        }
+        }  // Returnt die Userid des eigegebenen Usernamens
 
-        static byte[] convertBitmapImageToByteArray(BitmapImage bmpImage)
-        {
-            byte[] imageArray;
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(bmpImage));
-            using (MemoryStream ms = new MemoryStream())
-            {
-                encoder.Save(ms);
-                imageArray = ms.ToArray();
-                return imageArray;
-            }
-        }
 
         static BitmapImage convertByteArrayToBitmap(Byte[] btArray)
         {
-            BitmapImage bmp = new BitmapImage();
-            bmp.BeginInit();
-            bmp.StreamSource = new System.IO.MemoryStream(btArray);
+            BitmapImage bmp = new BitmapImage(); // Neues BitmapImage wird erstellt
+         
+            bmp.BeginInit();      
+            bmp.StreamSource = new System.IO.MemoryStream(btArray); // BitmapImage bekommt Inhalt (in Array Form)
             bmp.EndInit();
-            return bmp;
+            return bmp; // BitmapImage wird returnt 
         }
 
     }

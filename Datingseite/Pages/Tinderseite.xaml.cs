@@ -130,7 +130,6 @@ namespace Datingseite.Pages
             textboxGender.Text = "mehr";
             textboxDescription.Text = "da :(";
 
-            MessageBox.Show("" + TinderMethods.iterator);
         }
         
     }

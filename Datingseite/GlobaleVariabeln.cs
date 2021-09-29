@@ -12,7 +12,8 @@ namespace Datingseite
     {
         static MySqlCommand sqlCommand;
 
-        public static string globalMySqlConnection = "server=localhost; port=3306; username=root; password=...mysql...; database=moderndating";
+        public static string globalMySqlConnection = "server=localhost; port=3306; username=Datingseite; password=schönenabendnoch45613; database=modernDating";
+
         public static string username = "";
         public static string firstname = "";
         public static string name = "";

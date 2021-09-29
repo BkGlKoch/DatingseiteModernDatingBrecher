@@ -32,21 +32,19 @@ namespace Datingseite
         public static string matchesDescription = "";
         public static string matchesGender = "";
 
-        public static int iterator;
+        static int iterator = 1;
         static Boolean nextTinderPossible = true;
 
         static MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
         public static void getNewTinder()
         {
-            iterator = 1;
-
             if(iterator == GetIndexLong())
             {
                 nextTinderPossible = false;
             }
 
-            if (iterator != GlobaleVariabeln.userid && iterator != GetIndexLong() && !allmatchids.Contains(iterator))
+            if (iterator != GlobaleVariabeln.userid && iterator != GetIndexLong())
             {
                 query = "SELECT * FROM user WHERE idUser = '" + iterator + "'";
                 iterator++;
@@ -60,16 +58,11 @@ namespace Datingseite
          
             }
 
-
-
-
             mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
 
             DataTable dt = new DataTable();
 
             mySqlDataAdapter.Fill(dt);
-
-
 
             try
             {
@@ -113,15 +106,12 @@ namespace Datingseite
                 matchesDescription = dt.Rows[0].ItemArray[5].ToString();
                 matchesBirthday = dt.Rows[0].ItemArray[3].ToString();
                 matchesFullName = matchesFirstName + " " + matchesName;
-        
-
             }
             else
             {
                
             }
         }
-
 
         public static Boolean isNextTinderPossible()
         {
@@ -130,7 +120,6 @@ namespace Datingseite
 
         public static int GetIndexLong()
         {
-
             using (MySqlConnection conn = new MySqlConnection(GlobaleVariabeln.globalMySqlConnection))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM user", conn))
@@ -139,12 +128,9 @@ namespace Datingseite
                     int value = int.Parse(cmd.ExecuteScalar().ToString());
 
                     conn.Dispose();
-                    return value + 1;
+                    return value;
                 }
-
             }
-
         }
-
     }
 }

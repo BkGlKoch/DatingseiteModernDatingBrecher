@@ -22,9 +22,6 @@ using Microsoft.Win32;
 
 
 
-
-
-
 namespace Datingseite.Pages
 {
     /// <summary>
@@ -46,54 +43,13 @@ namespace Datingseite.Pages
 
             loadTinders();
 
-            
+            query = "SELECT username,vorname,geburtsdatum FROM matches,user WHERE idUSer1 = '" + GlobaleVariabeln.userid + "' AND idUser2 = idUser";
+            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, GlobaleVariabeln.globalMySqlConnection);
+            DataTable dt = new DataTable();
+            mySqlDataAdapter.Fill(dt);
+            matchesDatagrid.ItemsSource = dt.DefaultView;
 
-            for (int i = 0; i < allmatchids.Count; i++)
-            {
-                switch (i) {
 
-                    case 0:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder1.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 1:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder2.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 2:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder3.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 3:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder4.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 4:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder5.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 5:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder6.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 6:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder7.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 7:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder8.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 8:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder9.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                    case 9:
-                        TinderMethods.getUserDataFromUserId(Convert.ToInt32(allmatchids[i]));
-                        Tinder10.Text = TinderMethods.matchesFullName + " " + TinderMethods.matchesBirthday;
-                        break;
-                }
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -113,8 +69,6 @@ namespace Datingseite.Pages
             Window1 window = new Window1();
             window.Show();
 
-            
-
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -124,12 +78,8 @@ namespace Datingseite.Pages
             
         }
 
-
         private void loadTinders()
         {
-            mySqlCon.Open();
-
-           
             int howmuchmatches = 0;
 
             query = "SELECT * FROM matches WHERE idUser1 = '" + GlobaleVariabeln.userid + "'";
